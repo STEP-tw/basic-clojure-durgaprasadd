@@ -7,8 +7,9 @@
   {:level        :medium
    :use          '[loop recur]
    :dont-use     '[map]
-   :implemented? false}
-  [f & colls])
+   :implemented? true}
+  [f & colls] (loop [coll (first colls) res []]
+                (if (empty? coll) res (recur (rest coll) (conj res (f (first coll)))))))
 
 (defn filter'
   "Implement a non-lazy version of filter that accepts a
