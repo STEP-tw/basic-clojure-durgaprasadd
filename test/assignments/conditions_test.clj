@@ -43,3 +43,14 @@
                :ashwathama (yudishtira nil))
     )
   )
+
+(deftest duplicate-first-test
+  (testing "empty coll"
+    (is (nil? (duplicate-first [])))
+    )
+  (testing "non empty coll"
+    (are [x y] (= x y)
+               [1 1 2] (duplicate-first [1 2])
+               `(1 1 2) (duplicate-first `(1 2)))
+    )
+  )
