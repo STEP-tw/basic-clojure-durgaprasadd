@@ -8,8 +8,12 @@
    :use          '[loop recur]
    :dont-use     '[map]
    :implemented? true}
-  [f & colls] (loop [coll (first colls) res []]
-                (if (empty? coll) res (recur (rest coll) (conj res (f (first coll)))))))
+  [f & colls] (if (= (count colls) 1)
+                (loop [coll (first colls) res []]
+                  (if (empty? coll) res (recur (rest coll) (conj res (f (first coll))))))
+                (loop [colls colls res []]
+                  (if (zero? (apply min (map' count colls))) res (recur (map' rest colls) (conj res (apply f (map' first colls))))))
+                ))
 
 (defn filter'
   "Implement a non-lazy version of filter that accepts a

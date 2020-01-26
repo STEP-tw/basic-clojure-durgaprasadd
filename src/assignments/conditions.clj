@@ -102,7 +102,7 @@
   and prepend a 0 to the incremented list concatenated
   with the reverse of the incremented list
   [1 2 3] -> (4 3 2 0 2 3 4)"
-  {:level :easy
-   :use '[as-> reverse]
+  {:level        :easy
+   :use          '[as-> reverse]
    :implemented? false}
   [coll])

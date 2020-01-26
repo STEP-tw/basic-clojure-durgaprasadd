@@ -69,6 +69,7 @@
         (l/map' identity [1 2 3])
         (l/map' inc [1 2 3])
         (l/map' + [1 2 3] [4 5 6])
+        (l/map' first [[1 2 3] [4 5 6]])
         ;; fill the rest accordingly
         )))
 
