@@ -28,3 +28,18 @@
                nil (harishchandra nil))
     )
   )
+
+(deftest yudishtira-test
+  (testing "truthy values"
+    (are [x y] (= x y)
+               true (yudishtira true)
+               2 (yudishtira 2)
+               0 (yudishtira 0)
+               )
+    )
+  (testing "falsy/nil values"
+    (are [x y] (= x y)
+               :ashwathama (yudishtira false)
+               :ashwathama (yudishtira nil))
+    )
+  )
