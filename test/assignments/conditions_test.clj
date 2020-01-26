@@ -54,3 +54,28 @@
                `(1 1 2) (duplicate-first `(1 2)))
     )
   )
+
+(deftest five-point-someone-test
+  (testing "y value is 5"
+    (are [x y] (= x y)
+               :chetan-bhagat (five-point-someone 0 5)
+               :chetan-bhagat (five-point-someone 5 5)
+               ))
+  (testing "x value is 5"
+    (are [x y] (= x y)
+               :statan-bhagat (five-point-someone 5 0)
+               :statan-bhagat (five-point-someone 5 10)
+               ))
+  (testing "x is greater than y"
+    (are [x y] (= x y)
+               :greece (five-point-someone 1 0)
+               :greece (five-point-someone -1 -2)
+               ))
+
+  (testing "default condition"
+    (are [x y] (= x y)
+               :universe (five-point-someone 0 0)
+               :universe (five-point-someone -2 -1)
+               ))
+
+  )
