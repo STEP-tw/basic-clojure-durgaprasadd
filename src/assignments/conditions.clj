@@ -19,8 +19,8 @@
   Falsy values(false and nil) return nil"
   {:level        :easy
    :use          '[when-let]
-   :implemented? false}
-  [x])
+   :implemented? true}
+  [x] (when-let [x x] x))
 
 (defn yudishtira
   "Only returns truthy values as themselves.
