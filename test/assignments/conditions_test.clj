@@ -154,3 +154,20 @@
   (testing "default where x,y and z are equal"
     (is (= [] (order-in-words 2 2 2))))
   )
+
+(deftest zero-aliases-test
+  (testing "zero"
+    (is (= :zero (zero-aliases 0))))
+  (testing "empty list"
+    (are [x y] (= x y)
+               :empty (zero-aliases [])
+               :empty (zero-aliases '())))
+  (testing "empty set"
+    (is (= :empty-set (zero-aliases #{}))))
+  (testing "empty map"
+    (is (= :empty-map (zero-aliases {}))))
+  (testing "empty string"
+    (is (= :empty-string (zero-aliases ""))))
+  (testing "non zero or default value"
+    (is (= :not-zero (zero-aliases 10))))
+  )
