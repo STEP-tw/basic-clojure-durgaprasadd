@@ -171,3 +171,10 @@
   (testing "non zero or default value"
     (is (= :not-zero (zero-aliases 10))))
   )
+
+(deftest zero-separated-palindrome-test
+  (testing "empty coll"
+    (is (= [0] (zero-separated-palindrome []))))
+  (testing "non empty coll"
+    (is (= [3 2 1 0 1 2 3] (zero-separated-palindrome [0 1 2]))))
+  )
