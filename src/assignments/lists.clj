@@ -12,7 +12,7 @@
                 (loop [coll (first colls) res []]
                   (if (empty? coll) res (recur (rest coll) (conj res (f (first coll))))))
                 (loop [colls colls res []]
-                  (if (zero? (apply min (map' count colls))) res (recur (map' rest colls) (conj res (apply f (map' first colls))))))
+                  (if (some empty? colls) res (recur (map' rest colls) (conj res (apply f (map' first colls))))))
                 ))
 
 (defn filter'
