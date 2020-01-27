@@ -77,8 +77,10 @@
   (repeat-and-truncate (range 4) true true 6) => '(0 1 2 3 0 1)"
   {:level        :medium
    :use          '[cond->> concat take]
-   :implemented? false}
-  [coll rep? truncate? n])
+   :implemented? true}
+  [coll rep? truncate? n] (cond->> coll
+                                   rep? ((comp (partial apply concat) (partial repeat 2)))
+                                   truncate? (take n)))
 
 (defn order-in-words
   "Given x, y and z, returns a vector consisting of

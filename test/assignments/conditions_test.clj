@@ -106,3 +106,22 @@
                :tuntun (conditions-apply [1 2])
                :tuntun (conditions-apply [])))
   )
+
+(deftest repeat-and-truncate-test
+  (testing "if repeat is true"
+    (are [x y] (= x y)
+               [1 2 1 2] (repeat-and-truncate [1 2] true false 0)
+               [] (repeat-and-truncate [] true false 0)))
+  (testing "if truncate is true"
+    (are [x y] (= x y)
+               [1 2] (repeat-and-truncate [1 2 3] false true 2)
+               [] (repeat-and-truncate [] false true 2)))
+  (testing "if both repeat and truncate are true"
+    (are [x y] (= x y)
+               [1 2] (repeat-and-truncate [1 2 3] true true 2)
+               [1 2 1] (repeat-and-truncate [1 2] true true 3)))
+  (testing "if both repeat and truncate are false"
+    (are [x y] (= x y)
+               [1 2 3] (repeat-and-truncate [1 2 3] false false 5)
+               [] (repeat-and-truncate [] false false 5)))
+  )
