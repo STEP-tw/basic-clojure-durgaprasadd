@@ -52,6 +52,8 @@
               (> x y) :greece
               :else :universe))
 
+(defn is-single-occurance [sub-list main-list] (= (count (filter (partial = sub-list) (partition (count sub-list) 1 (filter (set sub-list) main-list)))) 1))
+
 (defn conditions-apply
   "Given a collection of any length, returns:
   :wonder-woman if collection has a single occurrence of 1 and 3 in that order
@@ -61,8 +63,12 @@
   {:level        :medium
    :use          '[condp filter]
    :alternates   '[if cond]
-   :implemented? false}
-  [coll])
+   :implemented? true}
+  [coll] (condp is-single-occurance coll
+           [1 3] :wonder-woman
+           [:a :b :c] :durga
+           [[2 3] [4 5]] :cleopatra
+           :tuntun))
 
 (defn repeat-and-truncate
   "Given coll and options to repeat and truncate

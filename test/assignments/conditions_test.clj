@@ -79,3 +79,30 @@
                ))
 
   )
+
+(deftest conditions-apply-test
+  (testing "single occurance of 1 and 3"
+    (are [x y] (= x y)
+               :wonder-woman (conditions-apply [1 3])
+               :wonder-woman (conditions-apply [1 2 3])
+               :wonder-woman (conditions-apply [1 1 3 3])
+               :wonder-woman (conditions-apply [1 1 3 3 1])))
+  (testing "single occurance of :a :b and :c"
+    (are [x y] (= x y)
+               :durga (conditions-apply [:a :b :c])
+               :durga (conditions-apply [:a :d :e :b :c])
+               :durga (conditions-apply [:a :a :b :c :b :c])
+               :durga (conditions-apply [:a :a :b :c :b :c :a])))
+  (testing "single occurance of [2 3] and [4 5]"
+    (are [x y] (= x y)
+               :cleopatra (conditions-apply [[2 3] [4 5]])
+               :cleopatra (conditions-apply [[2 3] [:a :b] [4 5]])
+               :cleopatra (conditions-apply [[2 3] [2 3] [4 5] [4 5]])
+               :cleopatra (conditions-apply [[2 3] [2 3] [4 5] [4 5] [2 3]])))
+  (testing "default"
+    (are [x y] (= x y)
+               :tuntun (conditions-apply [1 3 1 3])
+               :tuntun (conditions-apply [:a :b :c :a :b :c])
+               :tuntun (conditions-apply [1 2])
+               :tuntun (conditions-apply [])))
+  )
