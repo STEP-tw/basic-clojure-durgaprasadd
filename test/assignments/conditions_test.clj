@@ -125,3 +125,32 @@
                [1 2 3] (repeat-and-truncate [1 2 3] false false 5)
                [] (repeat-and-truncate [] false false 5)))
   )
+
+(deftest order-in-words-test
+  (testing "x is greater than y"
+    (are [x y] (= x y)
+               [:x-greater-than-y] (order-in-words 2 1 2)
+               [:x-greater-than-y] (order-in-words -1 -2 -1)))
+  (testing "y is greater than z"
+    (are [x y] (= x y)
+               [:y-greater-than-z] (order-in-words 2 2 1)
+               [:y-greater-than-z] (order-in-words -1 -1 -2)))
+  (testing "z is greater than x"
+    (are [x y] (= x y)
+               [:z-greater-than-x] (order-in-words 1 2 2)
+               [:z-greater-than-x] (order-in-words -2 -1 -1)))
+  (testing "x is greater than y and y is greater than z"
+    (are [x y] (= x y)
+               [:x-greater-than-y :y-greater-than-z] (order-in-words 3 2 1)
+               [:x-greater-than-y :y-greater-than-z] (order-in-words -1 -2 -3)))
+  (testing "y is greater than z and z is greater than x"
+    (are [x y] (= x y)
+               [:y-greater-than-z :z-greater-than-x] (order-in-words 1 3 2)
+               [:y-greater-than-z :z-greater-than-x] (order-in-words -3 -1 -2)))
+  (testing "x is greater than y and z is greater than x"
+    (are [x y] (= x y)
+               [:x-greater-than-y :z-greater-than-x] (order-in-words 2 1 3)
+               [:x-greater-than-y :z-greater-than-x] (order-in-words -2 -3 -1)))
+  (testing "default where x,y and z are equal"
+    (is (= [] (order-in-words 2 2 2))))
+  )
