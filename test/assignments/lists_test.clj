@@ -107,4 +107,10 @@
                [] (double-up [])
                [1 1 2 2 3 3] (double-up [1 2 3])
                ["hi" "hi" "i" "i" "u" "u"] (double-up ["hi" "i" "u"])))
+
+  (testing "third-or-fifth"
+    (are [x y] (= x y)
+               [] (third-or-fifth [])
+               [0 3] (third-or-fifth [0 1 2 3])
+               [0 3 5 6] (third-or-fifth [0 1 2 3 4 5 6])))
   )

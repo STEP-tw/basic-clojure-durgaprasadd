@@ -193,8 +193,8 @@
   elements whose index is either divisible by three or five"
   {:level        :easy
    :use          '[keep-indexed when :optionally map-indexed filter]
-   :implemented? false}
-  [coll])
+   :implemented? true}
+  [coll] (keep-indexed  (fn [index value] (when (or (zero? (mod index 3)) (zero? (mod index 5))) value)) coll))
 
 (defn sqr-of-the-first
   "Given a collection, return a new collection that contains the
