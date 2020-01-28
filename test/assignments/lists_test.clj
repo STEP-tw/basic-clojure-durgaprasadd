@@ -113,4 +113,9 @@
                [] (third-or-fifth [])
                [0 3] (third-or-fifth [0 1 2 3])
                [0 3 5 6] (third-or-fifth [0 1 2 3 4 5 6])))
+
+  (testing "sqr-of-the-first"
+    (are [x y] (= x y)
+               [1] (sqr-of-the-first [1])
+               [16 16 16] (sqr-of-the-first [4 5 6])))
   )

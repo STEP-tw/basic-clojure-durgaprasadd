@@ -203,8 +203,8 @@
   [4 5 6] => [16 16 16]"
   {:level        :easy
    :use          '[map constantly let]
-   :implemented? false}
-  [coll])
+   :implemented? true}
+  [coll] (let [first-num (first coll)] (map (constantly (* first-num first-num)) coll)))
 
 (defn russian-dolls
   "Given a collection and a number, wrap each element in a nested vector
