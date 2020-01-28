@@ -79,4 +79,10 @@
     (are [x y] (= x y)
                [3] (sum-of-adjacent-digits [1 2])
                [3 5] (sum-of-adjacent-digits [1 2 3])))
+
+  (testing "difference"
+    (are [x y] (= x y)
+               [] (difference [1 2] [1 2])
+               [] (difference [] [])
+               [3 4] (difference [1 2 5 6] [1 2 3 4])))
   )
