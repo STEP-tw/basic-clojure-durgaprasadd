@@ -40,4 +40,12 @@
       (is (zero? (count' []))))
     (testing "non empty coll"
       (is (= 2 (count' [1 2])))))
+
+  (testing "reverse"
+    (testing "non sequential"
+      (is (nil? (reverse' 124))))
+    (testing "sequential"
+      (are [x y] (= x y)
+                 [1 2 3] (reverse' [3 2 1])
+                 [\a \b] (reverse' "ba"))))
   )
