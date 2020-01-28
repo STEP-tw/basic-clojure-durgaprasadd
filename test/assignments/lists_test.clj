@@ -123,4 +123,9 @@
     (are [x y] (= x y)
                [1 2 3] (russian-dolls [1 2 3] 1)
                [[[1]] [[2]] [[3]]] (russian-dolls [1 2 3] 3)))
+
+  (testing "split-comb"
+    (are [x y] (= x y)
+               [1 3 2 4] (split-comb [1 2 3 4])
+               [1 3 2 4 5] (split-comb [1 2 3 4 5])))
   )

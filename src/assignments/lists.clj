@@ -213,7 +213,7 @@
   {:level        :medium
    :use          '[iterate mapv partial vector drop first ->>]
    :dont-use     '[for loop recur reduce]
-   :implemented? false}
+   :implemented? true}
   [coll nesting-factor] (mapv #(->> %1
                                     (iterate vector)
                                     (take nesting-factor)
@@ -228,8 +228,9 @@
   {:level        :easy
    :use          '[interleave split-at if rem concat take-last]
    :dont-use     '[loop recur map-indexed take drop]
-   :implemented? false}
-  [coll])
+   :implemented? true}
+  [coll] (let [x (rem (count coll) 2) res (apply interleave (split-at (quot (count coll) 2) coll))]
+           (if (zero? x) res (concat res (take-last x coll)))))
 
 (defn muted-thirds
   "Given a sequence of numbers, make every third element
