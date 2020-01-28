@@ -85,4 +85,10 @@
                [] (difference [1 2] [1 2])
                [] (difference [] [])
                [3 4] (difference [1 2 5 6] [1 2 3 4])))
+
+  (testing "union"
+    (are [x y] (= x y)
+               [] (union [] [])
+               [1 2] (union [1] [2])
+               [1 2 3 4] (union [1 2] [1 2 3 4])))
   )
