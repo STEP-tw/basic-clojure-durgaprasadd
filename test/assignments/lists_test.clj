@@ -118,4 +118,9 @@
     (are [x y] (= x y)
                [1] (sqr-of-the-first [1])
                [16 16 16] (sqr-of-the-first [4 5 6])))
+
+  (testing "russian-dolls"
+    (are [x y] (= x y)
+               [1 2 3] (russian-dolls [1 2 3] 1)
+               [[[1]] [[2]] [[3]]] (russian-dolls [1 2 3] 3)))
   )
