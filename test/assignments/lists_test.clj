@@ -24,4 +24,14 @@
                  [] (filter' even? [])
                  [] (filter' even? [1 3])))
     )
+
+  (testing "reduce"
+    (testing "with initial value"
+      (are [x y] (= x y)
+                 5 (reduce' + -1 [1 2 3])
+                 5 (reduce' rem 5 [])))
+    (testing "without initial value"
+      (are [x y] (= x y)
+                 1 (reduce' + [1])
+                 6 (reduce' + [1 2 3]))))
   )
