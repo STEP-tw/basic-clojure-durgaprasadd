@@ -61,4 +61,11 @@
                false (some?' even? [1 3 5])
                nil (some?' even? [])
                ))
+
+  (testing "ascending"
+    (are [x y] (= x y)
+               true (ascending? [])
+               true (ascending? [1 2 2 3])
+               false (ascending? [1 3 2])
+               ))
   )
