@@ -101,4 +101,10 @@
                [[1 2]] (cross-product [1] [2])
                [[1 3] [1 4] [2 3] [2 4]] (cross-product [1 2] [3 4])
                [] (cross-product [1] [1])))
+
+  (testing "double-up"
+    (are [x y] (= x y)
+               [] (double-up [])
+               [1 1 2 2 3 3] (double-up [1 2 3])
+               ["hi" "hi" "i" "i" "u" "u"] (double-up ["hi" "i" "u"])))
   )
