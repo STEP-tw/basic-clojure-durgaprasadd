@@ -68,4 +68,9 @@
                true (ascending? [1 2 2 3])
                false (ascending? [1 3 2])
                ))
+  (testing "transpose"
+    (are [x y] (= x y)
+               [[1]] (transpose [[1]])
+               [[1 3] [2 4]] (transpose [[1 2] [3 4]])
+               [[1 4 7] [2 5 8] [3 6 9]] (transpose [[1 2 3] [4 5 6] [7 8 9]])))
   )
