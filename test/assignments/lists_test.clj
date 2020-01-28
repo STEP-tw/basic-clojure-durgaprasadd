@@ -34,4 +34,10 @@
       (are [x y] (= x y)
                  1 (reduce' + [1])
                  6 (reduce' + [1 2 3]))))
+
+  (testing "count"
+    (testing "empty coll"
+      (is (zero? (count' []))))
+    (testing "non empty coll"
+      (is (= 2 (count' [1 2])))))
   )
