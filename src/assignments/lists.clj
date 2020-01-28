@@ -55,7 +55,7 @@
    :use          '[reduce conj seqable? when]
    :dont-use     '[reverse]
    :implemented? true}
-   [coll] (when (seqable? coll) (reduce' conj '() coll)))
+  [coll] (when (seqable? coll) (reduce' conj '() coll)))
 
 (defn every?'
   "Implement your own version of every? that checks if every
@@ -63,8 +63,9 @@
   {:level        :easy
    :use          '[loop recur and]
    :dont-use     '[every?]
-   :implemented? false}
-  ([pred coll]))
+   :implemented? true}
+  [pred coll] (loop [coll coll res true]
+                (if (or (empty? coll) (not res)) res (recur (rest coll) (pred (first coll))))))
 
 (defn some?'
   "Implement your own version of some that checks if at least one
@@ -74,8 +75,9 @@
   {:level        :easy
    :use          '[loop recur or]
    :dont-use     '[some]
-   :implemented? false}
-  ([pred coll]))
+   :implemented? true}
+  [pred coll] (loop [coll coll res nil]
+                (if (or (empty? coll) res) res (recur (rest coll) (pred (first coll))))))
 
 (defn ascending?
   "Verify if every element is greater than or equal to its predecessor"

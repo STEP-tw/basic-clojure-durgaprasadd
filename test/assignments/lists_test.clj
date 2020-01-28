@@ -48,4 +48,17 @@
       (are [x y] (= x y)
                  [1 2 3] (reverse' [3 2 1])
                  [\a \b] (reverse' "ba"))))
+
+  (testing "every"
+    (are [x y] (= x y)
+               true (every?' even? [2 4 6])
+               false (every?' even? (range 10))
+               true (every?' even? [])
+               ))
+  (testing "some"
+    (are [x y] (= x y)
+               true (some?' even? (range 10))
+               false (some?' even? [1 3 5])
+               nil (some?' even? [])
+               ))
   )
