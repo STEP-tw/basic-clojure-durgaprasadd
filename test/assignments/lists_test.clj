@@ -128,4 +128,11 @@
     (are [x y] (= x y)
                [1 3 2 4] (split-comb [1 2 3 4])
                [1 3 2 4 5] (split-comb [1 2 3 4 5])))
+
+  (testing "muted-thirds"
+    (are [x y] (= x y)
+               [] (muted-thirds [])
+               [1 2] (muted-thirds [1 2])
+               [1 2 0] (muted-thirds [1 2 3])
+               [1 2 0 4 5 0] (muted-thirds (range 1 7))))
   )
