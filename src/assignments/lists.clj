@@ -239,7 +239,7 @@
   {:level        :easy
    :use          '[map cycle]
    :dont-use     '[loop recur map-indexed take take-nth]
-   :implemented? false}
+   :implemented? true}
   [coll] (map * coll (cycle [1 1 0])))
 
 (defn palindrome?
@@ -247,8 +247,9 @@
   {:level        :easy
    :use          '[empty? loop recur butlast rest]
    :dont-use     '[reverse]
-   :implemented? false}
-  [coll])
+   :implemented? true}
+  [coll] (loop [coll coll]
+           (if (empty? coll) true (if-not (= (first coll) (last coll)) false (recur (rest (butlast coll)))))))
 
 (defn index-of
   "index-of takes a sequence and an element and finds the index

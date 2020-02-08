@@ -135,4 +135,11 @@
                [1 2] (muted-thirds [1 2])
                [1 2 0] (muted-thirds [1 2 3])
                [1 2 0 4 5 0] (muted-thirds (range 1 7))))
+
+  (testing "palindrome?"
+    (are [x y] (= x y)
+               true (palindrome? [])
+               true (palindrome? [1])
+               false (palindrome? [1 2])
+               true (palindrome? [1 2 3 2 1])))
   )
