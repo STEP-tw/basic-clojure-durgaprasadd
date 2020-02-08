@@ -160,5 +160,12 @@
     (are [x y] (= x y)
                [] (distinct' [])
                [1 2] (distinct' [1 2])
-               [1 2] (distinct' [1 2 1 2])))
+               [1 2] (distinct' [1 2 1 2])
+               [1 2] (distinct' [1 1 2 2 1 1])))
+
+  (testing "dedupe"
+    (are [x y] (= x y)
+               [] (dedupe' [])
+               [1 2] (dedupe' [1 2])
+               [1 2 1] (dedupe' [1 1 1 1 2 2 1 1 1])))
   )
