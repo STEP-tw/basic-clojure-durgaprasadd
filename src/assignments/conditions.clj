@@ -46,7 +46,7 @@
   Otherwise it returns :universe"
   {:level        :easy
    :use          '[cond]
-   :implemented? false}
+   :implemented? true}
   [x y] (cond (= y 5) :chetan-bhagat
               (= x 5) :statan-bhagat
               (> x y) :greece
