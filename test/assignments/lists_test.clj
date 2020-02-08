@@ -142,4 +142,11 @@
                true (palindrome? [1])
                false (palindrome? [1 2])
                true (palindrome? [1 2 3 2 1])))
+
+  (testing "index-of"
+    (are [x y] (= x y)
+               -1 (index-of [] 0)
+               -1 (index-of [1 2 4] 3)
+               0 (index-of [1 2 3] 1)
+               3 (index-of [1 2 3 4] 4)))
   )
