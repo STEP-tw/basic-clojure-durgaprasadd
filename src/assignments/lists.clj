@@ -94,8 +94,15 @@
   {:level        :medium
    :use          '[lazy-seq set conj let :optionally letfn]
    :dont-use     '[loop recur distinct]
-   :implemented? false}
-  [coll])
+   :implemented? true}
+  ([coll]
+   (distinct' coll #{}))
+  ([coll res]
+   (if-let [coll (seq coll)]
+     (let [current (first coll)]
+       (lazy-seq (if (res current)
+                   (distinct' (rest coll) res)
+                   (cons current (distinct' (rest coll) (conj res current)))))) [])))
 
 (defn dedupe'
   "Implement your own lazy sequence version of dedupe which returns
@@ -197,7 +204,7 @@
   {:level        :easy
    :use          '[keep-indexed when :optionally map-indexed filter]
    :implemented? true}
-  [coll] (keep-indexed  (fn [index value] (when (or (zero? (mod index 3)) (zero? (mod index 5))) value)) coll))
+  [coll] (keep-indexed (fn [index value] (when (or (zero? (mod index 3)) (zero? (mod index 5))) value)) coll))
 
 (defn sqr-of-the-first
   "Given a collection, return a new collection that contains the

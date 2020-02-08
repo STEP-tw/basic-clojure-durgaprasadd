@@ -155,4 +155,10 @@
                [1 2] (max-three-digit-sequence [1 2])
                [1 2 3] (max-three-digit-sequence [1 2 3])
                [2 3 4] (max-three-digit-sequence [1 2 3 4])))
+
+  (testing "distinct"
+    (are [x y] (= x y)
+               [] (distinct' [])
+               [1 2] (distinct' [1 2])
+               [1 2] (distinct' [1 2 1 2])))
   )
