@@ -278,8 +278,18 @@
   [coll n] (loop [coll coll index 0]
              (if (empty? coll) -1 (if (= (first coll) n) index (recur (rest coll) (inc index))))))
 
+(defn validate-sudoku-row [row]
+  (= (set (range 1 10)) (set row)))
+
+
 (defn validate-sudoku-grid
   "Given a 9 by 9 sudoku grid, validate it."
   {:level        :hard
-   :implemented? false}
-  [grid])
+   :implemented? true}
+  [grid] (every? validate-sudoku-row (concat grid
+                  (transpose grid)
+                  (->> grid
+                       (map (partial partition 3))
+                       (transpose)
+                       (flatten)
+                       (partition 9)))))
